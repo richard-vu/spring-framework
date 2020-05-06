@@ -8,8 +8,12 @@
  */
 package com.richard.app.webapp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.richard.app.service.BookService;
 
 /**
  * @author richard
@@ -18,8 +22,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class BookWebAppResource {
 
+ @Autowired
+ private BookService bookService;
+
  @GetMapping("/")
- public String hello() {
+ public String home(Model model) {
+  model.addAttribute("books", bookService.findAllBooks());
   return "index";
  }
 
