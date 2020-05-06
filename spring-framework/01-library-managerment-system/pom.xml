@@ -24,6 +24,8 @@
 		<spring-boot-starter-test.version>2.2.6.RELEASE</spring-boot-starter-test.version>
 		<jackson-dataformat-xml.version>2.10.3</jackson-dataformat-xml.version>
 		<modelmapper.version>2.0.0</modelmapper.version>
+		<tomcat-embed-jasper.version>9.0.34</tomcat-embed-jasper.version>
+		<spring-boot-starter-thymeleaf.version>2.2.6.RELEASE</spring-boot-starter-thymeleaf.version>
 	</properties>
 
 	<dependencies>
@@ -84,6 +86,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<version>${tomcat-embed-jasper.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>${spring-boot-starter-thymeleaf.version}</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
