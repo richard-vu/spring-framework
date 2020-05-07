@@ -101,7 +101,6 @@
 			<version>${spring-boot-starter-thymeleaf.version}</version>
 		</dependency>
 
-
 	</dependencies>
 
 	<build>
