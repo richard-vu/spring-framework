@@ -9,6 +9,7 @@
 package com.richard.app.io.repository;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.richard.app.io.entities.BookEntity;
 
@@ -16,6 +17,7 @@ import com.richard.app.io.entities.BookEntity;
  * @author richard
  *
  */
+@Repository
 public interface BookRepository extends CrudRepository<BookEntity, Long> {
 
 }
