@@ -41,5 +41,6 @@
 
 	<modules>
 		<module>01-library-managerment-system</module>
+		<module>02-user-manager</module>
 	</modules>
 </project>
