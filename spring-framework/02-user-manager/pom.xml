@@ -10,8 +10,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>01-library-managerment-system</artifactId>
-	<name>01-library-managerment-system</name>
+	<artifactId>02-user-manager</artifactId>
+	<name>02-user-manager</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
