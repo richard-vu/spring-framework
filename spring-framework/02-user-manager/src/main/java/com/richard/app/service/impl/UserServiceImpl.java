@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ import com.richard.app.ws.ui.controllers.models.responses.UserRegisterResponse;
 import com.richard.app.ws.ui.controllers.models.responses.UserResponse;
 
 import lombok.extern.slf4j.Slf4j;
+import java.lang.reflect.Type;
 
 /**
  * @author richard
@@ -39,9 +41,7 @@ public class UserServiceImpl implements UserService {
 
  @Override
  public List<UserResponse> getAllUsers() {
-  List<UserResponse> listUserResponse = new ArrayList<>();
   List<UserEntity>   listUserEntity   = new ArrayList<>();
-  ModelMapper        modelMapper      = new ModelMapper();
 
   userRepositoty.findAll().forEach(listUserEntity::add);
 
@@ -49,12 +49,17 @@ public class UserServiceImpl implements UserService {
    throw new UserServiceException("Database is null");
   }
 
-  for (UserEntity userEntity : listUserEntity) {
-   listUserResponse.add(modelMapper.map(userEntity, UserResponse.class));
-   log.info("debug enabled: {}", log.isDebugEnabled());
-  }
+  //  Create Conversion Type
+  Type listType = new TypeToken<List<UserResponse>>() {
+  }.getType();
 
+  //  Convert List of Entity objects to a List of DTOs objects 
+  List<UserResponse> listUserResponse = new ModelMapper().map(listUserEntity, listType);
+
+  log.info("debug enabled: {}", log.isDebugEnabled());
+  
   return listUserResponse;
+
  }
 
  @Override
@@ -75,6 +80,8 @@ public class UserServiceImpl implements UserService {
 
   userRepositoty.save(userEntity);
 
+  log.info("debug enabled: {}", log.isDebugEnabled());
+  
   return new UserRegisterResponse("User was Created");
  }
 
